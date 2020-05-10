@@ -3,7 +3,7 @@
 
 #define button 14   // the number of the pushbutton pin
 #define led 13      // the number of the LED pin
-#define poten_pin 15 // the number of pin in which potentiometer is connected
+#define poten_pin 16 // the number of pin in which potentiometer is connected
 
 
 unsigned long debounceDelay = 200;    // the debounce time; increase if the output flickers
@@ -29,8 +29,8 @@ void loop()
 {
     static uint32_t ledstart_time = 0;// Time in millis starts when led is on and off
     uint32_t runtime = millis();//Time for microcontroller on entering the loop
-    uint32_t plotter_time = 0;// Time for the serial plotter to be activated
-    uint32_t plotter_lasttime = 0;// To store the last time after the first plot 
+    //uint32_t plotter_time = 0;// Time for the serial plotter to be activated
+    //uint32_t plotter_lasttime = 0;// To store the last time after the first plot 
 
     //Analog value of the potentiometer
     voltage =analogRead(poten_pin);
@@ -56,13 +56,14 @@ void loop()
             
     }
     
-    // Code for the serial plotter; Starts only when, keep on pressing the switch; Plots the frequency
+    /* Code for the serial plotter; Starts only when, keep on pressing the switch; Plots the frequency
     plotter_time = millis();
     if(!digitalRead(button)&& (plotter_time - plotter_lasttime)>= (100*debounceDelay))
     {  
        Serial.println(Frequency);// Serial print frequency
        plotter_lasttime = plotter_time;
     }
+    */
          
 }
 
