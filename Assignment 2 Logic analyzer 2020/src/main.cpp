@@ -172,11 +172,11 @@ void loop() {
     display.drawFastHLine(0,63, SCREEN_WIDTH , WHITE);
     analogWrite(dacpin, function);
     uint32_t ADC_rawvalue = analogRead(adcpin);
-    float ADC_voltage = (float)map(ADC_rawvalue, 0, 255, 0, 3300)/1000;
+    float ADC_voltage = (float)map(ADC_rawvalue, 0, 255, 0, 3300)/1000;//mapping the raw value to voltage(0 - 3.3v)
     Serial.println(ADC_voltage);
     display_voltage(ADC_voltage);
     Serial.flush();
-    float pixel = (float)map(ADC_voltage, 0, 3.3, 63, 40);
+    float pixel = (float)map(ADC_voltage, 0, 3.3, 63, 40);//mapping to y pixes
     display.setCursor(0,63);
     display.setTextSize(1);
     display.drawPixel(x , pixel, WHITE);
@@ -203,11 +203,11 @@ float sine_generator(uint8_t function){
     uint32_t sineInput = sin((double)function/10)* 127 + 127;
     analogWrite(dacpin, sineInput);
     uint32_t ADC_rawvalue = analogRead(adcpin);
-    float ADC_voltage = (float)map(ADC_rawvalue, 0, 255, 0, 3300)/1000.0;
+    float ADC_voltage = (float)map(ADC_rawvalue, 0, 255, 0, 3300)/1000.0;//mapping the raw value to voltage(0 - 3.3v)
     Serial.println(ADC_voltage);
     display_voltage(ADC_voltage);
     Serial.flush();
-    float pixel = (float)map(ADC_voltage, 0, 3.3, 63, 45);
+    float pixel = (float)map(ADC_voltage, 0, 3.3, 63, 45);//mapping to y-pixels
     display.setCursor(0,63);
     display.setTextSize(1);
     display.drawPixel(x , pixel, WHITE);
@@ -232,10 +232,10 @@ float triangle_generator(uint8_t function){
       top = 0;
       analogWrite(dacpin, function);
       uint32_t ADC_rawvalue = analogRead(adcpin);
-      float ADC_voltage = (float)map(ADC_rawvalue, 0, 255, 0, 3300)/1000;
+      float ADC_voltage = (float)map(ADC_rawvalue, 0, 255, 0, 3300)/1000;//mapping the raw value to voltage(0 - 3.3v)
       Serial.println(ADC_voltage);
       display_voltage(ADC_voltage);
-      float pixel = (float)map(ADC_voltage, 0, 3.3, 63, 40);
+      float pixel = (float)map(ADC_voltage, 0, 3.3, 63, 40);//mapping to y pixels
       display.setCursor(0,63);
       display.setTextSize(1);
       display.drawPixel(x , pixel, WHITE);
@@ -258,10 +258,10 @@ float triangle_generator(uint8_t function){
       display.drawFastHLine(0,63, SCREEN_WIDTH , WHITE); 
       analogWrite(dacpin, descent);
       uint32_t ADC_rawvalue = analogRead(adcpin);
-      float ADC_voltage = (float)map(ADC_rawvalue, 0, 255, 0, 3300)/1000;
+      float ADC_voltage = (float)map(ADC_rawvalue, 0, 255, 0, 3300)/1000;//mapping the raw value to voltage(0 - 3.3v)
       Serial.println(ADC_voltage);
       display_voltage(ADC_voltage);
-      float pixel = (float)map(ADC_voltage, 0, 3.3, 63, 40);
+      float pixel = (float)map(ADC_voltage, 0, 3.3, 63, 40);//mapping to y pixels
       display.setCursor(0,63);
       display.setTextSize(1);
       display.drawPixel(x , pixel, WHITE);
@@ -365,8 +365,8 @@ void oscilioscope(){
   display.drawFastVLine(0,0, SCREEN_HEIGHT , WHITE);
   display.drawFastHLine(0,63, SCREEN_WIDTH , WHITE);
   pot_value = analogRead(potenpin);
-  float voltage = map(pot_value, 0, 60, 0, 3.3);
-  float pixel = map(voltage, 0, 3.3, 63, 10);
+  float voltage = map(pot_value, 0, 60, 0, 3.3);//mapping the raw value to voltage(0 - 3.3v)
+  float pixel = map(voltage, 0, 3.3, 63, 10);//mapping to y pixels
   display.setCursor(0,63);
   display.setTextSize(1);
   display.drawPixel(x , pixel, WHITE);
