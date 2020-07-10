@@ -92,3 +92,5 @@ The required output was obtained with the below mentioned rules:
 - Implement Start screen, menu screen, and mode screen
 - Design and implement as finite state machine
 - Apply debouncing for buttons
+
+The video presentation for the project is given as a google drive link https://drive.google.com/file/d/18lzUqGMtlUTJbVfAUP-ulWOWpBhsamMt/view?usp=sharing
